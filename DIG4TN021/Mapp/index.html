@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mapp</title>
+  <meta name="author" content="Tatu Arvela">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!--Favicons-->
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00c853">
+
+<!--Stylesheets-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="css/materialize.css"/>
+<link type="text/css" rel="stylesheet" href="css/lightbox.min.css"/>
+<link rel="stylesheet" href="css/main.css"/>
+
+<!--Scripts-->
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/lightbox.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+<script src="js/main.js"></script>
+</head>
+
+<body class="grey darken-2">
+	<!--Navigation-->
+	<nav id="nav" class="nav-extended green accent-4">
+		<div class="nav-wrapper">
+			<a class="brand-logo center"><img src="images/Mapp_white.svg"/>Mapp</a>
+			<ul class="right">
+				<li><a href="#"><i class="material-icons dropdown-button" data-activates="nav-dropdown" data-alignment="right" data-beloworigin="true">menu</i></a></li>
+			</ul>
+		</div>
+
+		<div class="nav-content hide-on-med-and-up">
+			<ul class="tabs tabs-transparent">
+				<li class="tab"><a href="#map"><i class="material-icons">map</i></a></li>
+				<li class="tab"><a href="#chat"><i class="material-icons">question_answer</i></a></li>
+				<li class="tab"><a href="#gallery"><i class="material-icons">photo_library</i></a></li>
+			</ul>
+		</div>
+
+		<div class="nav-content hide-on-small-only">
+			<ul class="tabs tabs-transparent">
+				<li class="tab"><a href="#map"><i class="material-icons inline-block">map</i> Kartta</a></li>
+				<li class="tab"><a href="#chat"><i class="material-icons inline-block">question_answer</i> Keskustelu</a></li>
+				<li class="tab"><a href="#gallery"><i class="material-icons inline-block">photo_library</i> Kuvat</a></li>
+			</ul>
+		</div>
+
+		<ul id="nav-dropdown" class="dropdown-content">
+			<li><a href="#settings">Asetukset</a></li>
+			<li><a href="#about">Tietoja</a></li>
+		</ul>
+	</nav>
+
+	<!--Settings-->
+	<div id="settings" class="modal">
+		<div class="modal-content">
+			<h4>Asetukset</h4>
+			<br/>
+			<div class="input-field col s6">
+				<i class="material-icons prefix">account_circle</i>
+				<input placeholder="Aseta itsellesi nimimerkki" id="username" type="text" required>
+				<label for="username">Nimimerkki</label>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" onclick="saveSettings()">Käytä</a>
+		</div>
+	</div>
+
+	<!--About-->
+	<div id="about" class="modal">
+		<div class="modal-content">
+			<h4 class="brand-logo">Mapp</h4>
+			<p>Sovellus, jossa voit katsoa, kertoa ja näyttää asioita kartalla muiden ihmisten kanssa.</p>
+			<p>Versio 1.0.3</p>
+			<p>© Tatu Arvela, 2017. Kaikki oikeudet pidätetään.</p>
+			<hr/>
+			<p>Hyödyntää seuraavia palveluja ja kirjastoja:</p>
+			<ul>
+				<li><a href="https://jquery.com/">jQuery</a></li>
+				<li><a href="http://materializecss.com/">Materialize</a></li>
+				<li><a href="https://firebase.google.com/">Firebase</a></li>
+				<li><a href="https://developers.google.com/maps/">Google Maps API</a></li>
+				<li><a href="http://lokeshdhakar.com/projects/lightbox2/">Lightbox</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!--Main-->
+	<div id="main" class="row">
+
+		<!--Map-->
+		<div id="map" class="row">
+			<div id="googlemap"></div>
+			<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1efLaEWMkYihuuR3EJGLzk3A4xmUio7U">
+			</script>
+		</div>
+
+		<!--Chat-->
+		<div id="chat" class="row">
+			<div class="col s12 grey darken-2" id="messages">
+				<p class="card-panel message grey lighten-4" id="loading-messages">Ladataan viestejä...</p>
+			</div>
+
+			<form class="col s12 grey darken-3" id="messageform" onsubmit="getLocation(sendMessage); return false;">
+				<div class="card-panel row grey lighten-4">
+					<div class="input-field col s12">
+						<i class="material-icons prefix">photo_camera</i>
+						<input type="file" id="image" name="image" accept="image/*" capture="capture"/>
+					</div>
+					<div class="input-field col s10">
+						<input type="text" id="message" maxlength="140" required/>
+						<label for="message">Syötä viesti</label>
+					</div>
+					<button type="submit" class="col s2 waves-effect waves-light btn blue" id="submitBtn">
+						<i class="material-icons">send</i>
+					</button>
+				</div>
+			</form>
+		</div>
+
+		<!--Images-->
+		<div id="gallery" class="row">
+			<div class="col s12 grey darken-2" id="images">
+				<p class="card-panel message grey lighten-4" id="loading-images">Ladataan viestejä...</p>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

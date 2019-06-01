@@ -1,0 +1,15 @@
+gems:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+exclude:
+  - angular-amica-menu
+  - java-concurrent-io
+  - java-websocket-voting
+  - SWD1TN002
+  - SWD4TN020
+  - SWD4TN023/*
+include:
+  - PRO1TN003/README.md
+  - SWD4TN023/Workingtimes

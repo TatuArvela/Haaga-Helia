@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p th:if="${age &lt; 18}" th:text="'You are too young!'" />
+    <p th:unless="${age &lt; 18}" th:text="'Welcome ' + ${name} + '!'" />
+</body>
+</html>

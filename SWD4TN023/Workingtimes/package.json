@@ -1,0 +1,34 @@
+{
+  "name": "workingtimes",
+  "version": "1.0.0",
+  "description": "Working time recording app",
+  "scripts": {
+    "compile": "webpack",
+    "start": "node server.js"
+  },
+  "author": "Tatu Arvela",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.17.1",
+    "connect-ensure-login": "^0.1.1",
+    "core-js": "^2.4.1",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "jsonwebtoken": "^7.4.0",
+    "material-ui": "^0.18.0",
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.9.7",
+    "passport": "^0.3.2",
+    "passport-google-oauth20": "^1.0.0",
+    "passport-http-bearer": "^1.0.1",
+    "react": "^15.5.4",
+    "react-dev-utils": "^0.5.2",
+    "react-dom": "^15.5.4",
+    "react-tap-event-plugin": "^2.0.1",
+    "webpack": "^2.5.0"
+  }
+}

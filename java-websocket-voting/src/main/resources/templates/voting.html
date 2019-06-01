@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Sockvote</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous"/>
+    <style>
+        .content {
+            background-image: linear-gradient(45deg, #2e3192, #1bffff);
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script>
+        // Initialization
+        var question    = "";
+        var no          =  0;
+        var yes         =  0;
+        var socket = new WebSocket('ws://' + window.location.host + '/vote');
+
+        // Add an event listener for when a connection is open
+        socket.onopen = function() {
+        };
+
+        // Add an event listener for when a message is received from the server
+        socket.onmessage = function(message) {
+            try {
+                var data = JSON.parse(message.data);
+                question = data.question;
+                no = data.no;
+                yes = data.yes;
+            } catch (e) {
+
+            }
+
+            updateView();
+        };
+
+        var updateView = function() {
+            if (question) {
+                $('#question').removeClass('display-2 display-5 text-muted');
+                $('#question').addClass('display-2');
+                $('#question').html(question);
+                $('#editToggle').html("Vaihda kysymys");
+                $('#votes').show();
+            }
+            else {
+                $('#question').removeClass('display-2 display-5 text-muted');
+                $('#question').addClass('display-5 text-muted');
+                $('#question').html("Äänestys ei ole käynnissä.<br/>Aseta kysymys.");
+                $('#editToggle').html("Aseta kysymys");
+                $('#votes').hide();
+            }
+
+            $('#yes').html(yes);
+            $('#no').html(no);
+        }
+
+        var setNewQuestion = function() {
+            var newQuestion = $('#newQuestion').val();
+            socket.send('question '+ newQuestion);
+            $('#newQuestion').val("");
+            $('#newQuestionModal').modal('toggle');
+            return false;
+        }
+
+        var voteNo = function() {
+            socket.send('no');
+            return false;
+        }
+
+        var voteYes = function() {
+            socket.send('yes');
+            return false;
+        }
+
+    </script>
+</head>
+<body>
+    <div class="content">
+        <div class="container text-center my-5">
+            <div class="card border-0">
+                <div class="card-block">
+                    <div class="card-title">
+                        <h1 class="display-4">Sockvote</h1>
+                    </div>
+                    <div class="card-block">
+                        <div class="jumbotron">
+                            <h2 class="mb-5" id="question"></h2>
+                            <p id="votes">
+                                <button class="btn btn-danger btn-lg mx-2" href="#" role="button" onclick="voteNo()">
+                                    <i class="fa fa-thumbs-down" aria-hidden="true"></i> Ei (<span id="no"/>)
+                                </button>
+                                <button class="btn btn-success btn-lg mx-2" href="#" role="button" onclick="voteYes()">
+                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i> Kyllä (<span id="yes"/>)
+                                </button>
+                            </p>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-lg mt-2" data-toggle="modal" data-target="#newQuestionModal">
+                            <span>
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                <span id="editToggle">Vaihda äänestystä</span>
+                            </span>
+                        </button>
+                        <div class="modal fade" id="newQuestionModal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content p-5">
+                                    <div class="modal-body">
+                                        <form onsubmit="return setNewQuestion()" method="post">
+                                            <div class="form-group">
+                                                <label for="newQuestion" class="col-form-label-lg">Uusi äänestys</label>
+                                                <input type="text" class="form-control form-control-lg text-center" id="newQuestion" name="question" placeholder="Aseta kysymys"/>
+                                            </div>
+                                            <button type="button" class="btn btn-secondary btn-lg m-1" data-dismiss="modal">Peruuta</button>
+                                            <button type="submit" class="btn btn-primary btn-lg m-1">Aseta uusi äänestys</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

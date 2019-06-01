@@ -1,0 +1,130 @@
+body {
+	width: 100%;
+	margin: auto;
+	padding: 0px;
+	font-family: sans-serif;
+	background-color:#E9EBEE;
+}
+
+h1 {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	font-size: 22px;
+	text-align: left;
+	padding-left: 70px;
+    display: block;
+    height: 64px;
+    width: calc(100% - 64px);
+    margin: 0px;
+    line-height: 64px;
+    color: #F9F9F9;
+    background: #3F51B5;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.26);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    z-index: 1000;
+    cursor: default;
+}
+
+h1 > a, h1 > a:visited {
+	color: #F9F9F9;
+	text-decoration: none;
+}
+
+body > div {
+    margin: 96px auto 96px auto;
+	text-align: center;
+}
+
+table, #login {
+	display: inline-block;
+	margin: -2px;
+    border-radius: 0px;
+	background: #F9F9F9;
+	border-left:5px solid #3F51B5;
+	border-collapse: collapse;
+	box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),
+	0 3px 1px -2px rgba(0,0,0,0.2),
+	0 1px 5px 0 rgba(0,0,0,0.12);
+	font-size: 17px;
+	text-align: right;
+	width: 1250px;
+	cursor: default;
+}
+
+#login {
+	padding: 20px;
+	width: 400px;
+}
+
+#login input[type="text"], #login input[type="password"] {
+	width: 220px;
+	border: 1px solid #3F51B5;
+    margin: 5px 0px 5px 10px;
+    font-size: 17px;
+}
+
+h2 {
+	text-align: center;
+}
+
+table p, #login p {
+	display: inline-block;
+	width: 130px;
+	margin: 0px;
+	text-align: center;
+}
+
+table input, table select {
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid #3F51B5;
+    background: none;
+    font-size: 17px;
+    text-align: right;
+}
+
+#login #error {
+	display: block;
+	color: red;
+	width: auto;
+	clear: both;
+    margin: 10px 0px 10px 0px;
+}
+
+th, td {
+	width: 235px;
+	max-width: 235px;
+	height: 40px;
+	padding: 0px 5px 0px 10px;
+}
+
+th {
+	background-color: #3F51B5;
+    color: #F9F9F9;
+}
+
+button, input[type="submit"] {
+	background: #7381CE;
+	border-radius:3px;
+	border:none;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	float: right;
+	font-size:13px;
+	margin-left:5px;
+	padding:6px 24px;
+	width: auto;
+	text-decoration:none;
+}
+
+button:hover, input[type="submit"]:hover {
+	background: #3F51B5;
+}
+
+button:active, input[type="submit"]:active {
+	position:relative;
+	top:1px;
+}

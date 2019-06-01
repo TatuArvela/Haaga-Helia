@@ -1,0 +1,291 @@
+body {
+	background: #f9e5ab;
+	font-family: 'Cormorant', serif;
+}
+h1 {
+	font-size: 48px;
+	font-weight: bold;
+}
+h2, h3, h4 {
+	font-weight: bold;
+}
+.jumbotron {
+	color: #202020;
+}
+.jumbotron p,
+.container p {
+	font-size: 20px;
+	font-weight: bold !important;
+}
+body > .container-fluid {
+	padding: 0px;
+}
+.jumbotron {
+	background: none;
+}
+.col-sm-4 > img {
+	width: 100%;
+	border-radius: 50%;
+}
+.btn {
+	font-weight: bold;
+	font-size: 16px;
+	background: #f9e5ab;
+	border: none;
+}
+.btn:hover,
+.btn:focus {
+	background: #f7db88;
+}
+.btn:active,
+.btn:active:hover,
+.btn:active:focus {
+	background: #f5d470;
+}
+
+/* Navbar */
+.navbar {
+	margin-bottom: 0px;
+}
+.navbar-inverse {
+	background: #062d1f;
+	border: none;
+	border-radius: 0px;
+	font-family: 'Cormorant', serif;
+	font-size: 16px;
+	font-weight: bold;
+}
+.navbar-inverse .navbar-brand {
+	color: #f9e5ab;
+	background: #ba2f28;
+}
+.navbar-inverse .navbar-brand:hover {
+	color: white;
+	background: #ba2f28;
+}
+.navbar-inverse .navbar-nav>li>a {
+	color: #f9e5ab;
+}
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:focus,
+.navbar-inverse .navbar-nav>.active>a:hover {
+	color: #062d1f;
+	background-color: #f9e5ab;
+}
+.dropdown-menu {
+	background: black;
+}
+.dropdown-menu>li>a {
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/* Carousel */
+.carousel {
+	background: #202020;
+}
+.carousel-inner > .item > img {
+	margin: 0 auto;
+}
+.carousel-caption {
+	background: #062d1f;
+	font-family: 'Cormorant', serif;
+	font-weight: bold;
+	font-size: 16px;
+	padding: 0px;
+	margin-bottom: 30px;
+}
+.carousel-caption > h3 {
+	margin: 8px 0px;
+	font-weight: bold;
+}
+.carousel-indicators {
+	background: #ba2f28;
+	bottom: 0px;
+	margin-bottom: 0px;
+	width: 100%;
+	left: initial;
+	margin-left: initial;
+	padding: 5px 0px;
+}
+
+/* Panels */
+.panel {
+	color: #f9e5ab;
+	background: #202020;
+	font-size: 16px;
+	font-weight: bold;
+	border: 0px;
+}
+.panel-default > .panel-heading {
+	color: #f9e5ab;
+	background: #062d1f;
+	border: 0px;
+}
+.panel-title {
+	font-size: 20px;
+	font-weight: bold;
+}
+.panel-group .panel-heading+.panel-collapse > .panel-body {
+	padding-top: 0px;
+	border-top: 0px;
+}
+.panel h4 {
+	margin-top: 30px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/* Accordions */
+.accordion {
+	margin-top: 8px;
+	font-family: 'Cormorant', serif;
+}
+.accordion > h3 {
+	font-weight: bold !important;
+	border: none;
+}
+.accordion > h3:not(.ui-state-active):hover,
+.accordion > h3:not(.ui-state-active):focus {
+	color: #ba2f28;
+}
+.accordion > div {
+	height: auto !important;
+	color: white;
+	background: none;
+	border: none;
+	font-weight: bold;
+}
+
+/* Tabs */
+.tabs {
+	font-family: 'Cormorant', serif;
+	background: none;
+	border: none !important;
+}
+.tabs > ul,
+.tabs > ul > li {
+	background: none;
+	border: none;
+}
+.tabs > ul > li > a {
+	font-weight: bold;
+}
+.tabs > ul > li:not(.ui-state-active):hover > a,
+.tabs > ul > li:not(.ui-state-active) > a:hover {
+	color: #ba2f28;
+}
+.ui-tabs-panel {
+	padding: 10px !important;
+}
+
+/* Lightbox */
+.thumbnail {
+	width: 30%;
+	display: inline-block;
+	box-shadow: 2px 2px 2px #202020;
+	transition: transform .1s;
+	background: #ba2f28;
+	border: 0px;
+	margin: 3px;
+}
+.thumbnail:hover {
+	transform: scale(1.1);
+}
+.lightborder .thumbnail {
+	background: white;
+}
+.lb-caption,
+.lb-number {
+	font-size: 16px !important;
+}
+
+/* Varaus */
+#varaus {
+	color: white;
+	background: #062d1f;
+	margin: 20px auto;
+	padding: 5px 15px;
+	border-radius: 2px;
+    float: none !important;
+}
+.form-group {
+	margin: 10px 0px;
+	text-align: left;
+	font-size: 16px;
+}
+.form-group > input,
+.form-group > textarea {
+	color: black;
+	display: block;
+	width: 100%;
+	font-weight: bold;
+}
+#varaus-information {
+	max-width: 100%;
+	line-height: 16px;
+	height: 4em;
+	vertical-align: top;
+}
+#varaus > .btn,
+#yhteenveto > .btn {
+	margin: 10px;
+}
+#yhteenveto {
+	background: #062d1f;
+	color: white;
+	vertical-align: top;
+	display: none;
+	padding: 5px 15px;
+	margin: 20px auto;
+	border-radius: 2px;
+    float: none !important;
+}
+#yhteenveto > .form-group > p {
+	width: 100%;
+	border-bottom: solid 1px white;
+}
+
+/* Yhteydenotto */
+#otayhteytta {
+	margin: 20px;
+}
+#yhteydenotto,
+#viestilahetetty {
+	display: none;
+	background: #f9e5ab;
+	color: #202020;
+	padding: 20px;
+	margin: 5px;
+	border-radius: 2px;
+}
+
+/* Well */
+.well {
+	background: #ba2f28;
+	color: #f9e5ab;
+	margin-bottom: 0px;
+	font-weight: bold;
+	font-size: 16px;
+}
+iframe {
+	max-width: 100%;
+}
+.table {
+	max-width: 80%;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.table th,
+.table td {
+	border-color: #f9e5ab !important;
+}
+
+/* Separator lines */
+hr {
+	display: block;
+	border: 2px solid #202020;
+	border-radius: 2px;
+}

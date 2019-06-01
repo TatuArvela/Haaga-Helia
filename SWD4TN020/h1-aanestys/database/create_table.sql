@@ -1,0 +1,8 @@
+CREATE TABLE question
+(
+id int NOT NULL AUTO_INCREMENT,
+question varchar(255) NOT NULL,
+yes int DEFAULT 0,
+no int DEFAULT 0,
+PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

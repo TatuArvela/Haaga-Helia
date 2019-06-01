@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Bookstore: Booklist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div class="container well well-lg">
+        <div class="row">
+            <form class="input-group col-sm-1 pull-right" th:action="@{/logout}" method="post">
+                <p class="input-group-addon" th:inline="text">Logged in as [[${#httpServletRequest.remoteUser}]]</p>
+                <button type="submit" ref="/logout" class="btn btn-warning">Log out</button>
+            </form>
+        </div>
+
+        <h1 class="text-center">Bookstore: Booklist</h1>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>Author</th>
+                <th>Title</th>
+                <th>ISBN</th>
+                <th>Year</th>
+                <th sec:authorize="hasAuthority('ADMIN')"></th>
+            </tr>
+            <tr th:each = "book : ${books}">
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.isbn}"></td>
+                <td th:text="${book.year}"></td>
+                <td class="text-center" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </table>
+        <div class="text-center">
+            <a href="/add" class="btn btn-success">Add book</a>
+        </div>
+    </div>
+</body>
+</html>

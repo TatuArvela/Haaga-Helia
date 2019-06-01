@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring React StudentList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+
+<body>
+<div class='container'>
+    <div id='root'></div>
+</div>
+
+<script type="text/babel">
+    class App extends React.Component {
+
+        constructor() {
+            super();
+
+            this.handleChange = this.handleChange.bind(this);
+            this.addStudent = this.addStudent.bind(this);
+            this.deleteStudent = this.deleteStudent.bind(this);
+            this.fetchStudents = this.fetchStudents.bind(this);
+            this.componentWillMount = this.componentWillMount.bind(this);
+
+            this.state = {
+                students: [],
+                newStudent: {
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                }
+            };
+        }
+
+
+        handleChange(event) {
+            const propertyName = event.target.name;
+            const student = this.state.newStudent;
+            const newStudent = {
+                ...student,
+                [propertyName]: event.target.value
+            };
+            this.setState({ newStudent: newStudent });
+        }
+
+
+        addStudent() {
+            let student = this.state.newStudent;
+            console.log('newStudent', student);
+
+            fetch("/api/students/", {
+                credentials: 'same-origin',
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(student),
+            })
+                .then(function() {
+                    this.fetchStudents();
+                }.bind(this));
+
+            this.setState({
+                student: {
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                }
+            });
+
+            event.preventDefault();
+        }
+
+
+        deleteStudent(url) {
+            fetch(url, {
+                credentials: 'same-origin',
+                method: 'DELETE'
+            })
+            .then(function() {
+                this.fetchStudents();
+            }.bind(this));
+        }
+
+
+        fetchStudents() {
+            fetch('http://localhost:8080/api/students', {
+                credentials: 'same-origin'
+            })
+            .then(result => result.json())
+            .then(result => this.setState({
+                students: result._embedded.students,
+            }));
+        }
+
+
+        componentWillMount() {
+            this.fetchStudents();
+        }
+
+
+        render() {
+            return (
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-8 col-md-offset-2">
+                            <h1 className="text-center">Spring React StudentList</h1>
+
+                            <div className="well well-xs row text-center">
+                                Logged in. <a className="btn btn-warning btn-xs" href="/logout">Log out</a>
+                            </div>
+
+                            <AddStudent newStudent={this.state.newStudent} addStudent={this.addStudent} handleChange={this.handleChange}/>
+                            <Students students={this.state.students} fetchStudents={this.fetchStudents} deleteStudent={this.deleteStudent} />
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+    }
+
+    class AddStudent extends React.Component {
+        render() {
+            return (
+                <form className="well well-xs row" onSubmit={this.props.addStudent}>
+                    <div className="input-group">
+                        <span className="input-group-addon">First name</span>
+                        <input type="text" className="form-control" name="firstName" placeholder="First name" value={this.props.newStudent.firstName} onChange={this.props.handleChange} required/>
+                    </div>
+                    <br/>
+                    <div className="input-group">
+                        <span className="input-group-addon">Last name</span>
+                        <input type="text" className="form-control" name="lastName" placeholder="Last name" value={this.props.newStudent.lastName} onChange={this.props.handleChange} required/>
+                    </div>
+                    <br/>
+                    <div className="input-group">
+                        <span className="input-group-addon">Email</span>
+                        <input type="email" className="form-control" name="email" placeholder="Email" value={this.props.newStudent.email} onChange={this.props.handleChange} required/>
+                    </div>
+                    <br/>
+                    <button type="submit" className="btn btn-success btn-block">Add student</button>
+                </form>
+            );
+        }
+    }
+
+    class Students extends React.Component {
+        render() {
+            return (
+                <div className="row">
+                    <table className="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th className="col-md-3">First name</th>
+                            <th className="col-md-3">Last name</th>
+                            <th className="col-md-3">Email</th>
+                            <th className="col-md-3"></th>
+                        </tr>
+                        </thead>
+                        <tbody>{
+                            this.props.students.map(student =>
+                            <Student
+                                firstName={student.firstName}
+                                lastName={student.lastName}
+                                email={student.email}
+                                url={student._links.self.href}
+                                deleteStudent={this.props.deleteStudent}
+                            />)
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
+    }
+
+    class Student extends React.Component {
+        render() {
+            return (
+                <tr>
+                    <td>{this.props.firstName}</td>
+                    <td>{this.props.lastName}</td>
+                    <td><a href={'mailto:' + this.props.email}>{this.props.email}</a></td>
+                    <td><button className="btn btn-danger btn-block" onClick={() => this.props.deleteStudent(this.props.url)}>Delete</button></td>
+                </tr>
+            );
+        }
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root') );
+</script>
+
+</body>
+</html>

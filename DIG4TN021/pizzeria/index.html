@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Tatu Arvela -->
+	<title>Pizzeria Figaro</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="styles/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/jquery-ui.min.css">
+	<link rel="stylesheet" href="styles/jquery-ui.structure.min.css">
+	<link rel="stylesheet" href="styles/jquery-ui.theme.min.css">
+	<link rel="stylesheet" href="styles/lightbox.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Cormorant" rel="stylesheet">
+	<link href="styles/main.css" rel="stylesheet">
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/bootstrap.min.js"></script>
+	<script src="scripts/jquery-ui.min.js"></script>
+	<script src="scripts/lightbox.min.js"></script>
+	<script src="scripts/main.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand focus" href="#alku">Pizzeria Figaro</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navigointi">
+			<ul class="nav navbar-nav">
+			<li><a class="focus" href="#info">Tietoa ravintolasta</a></li>
+			<li class="dropdown">
+				<a class="dropdown-toggle focus" data-toggle="dropdown" href="#">Menut <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a class="focus" href="#lounas" data-toggle="collapse">Lounas</a></li>
+					<li><a class="focus" href="#illallinen" data-toggle="collapse">Illallinen</a></li>
+					<li><a class="focus" href="#takeaway" data-toggle="collapse">Take-away ja kotiinkuljetus</a></li>
+				</ul>
+			</li>
+				<li><a class="focus" href="#yhteystiedot">Yhteystiedot</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-thumbs-up"></span> Tykkää Facebookissa</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container-fluid text-center" id="alku">
+	<div id="kuvaesitys" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#kuvaesitys" data-slide-to="0" class="active"></li>
+			<li data-target="#kuvaesitys" data-slide-to="1"></li>
+			<li data-target="#kuvaesitys" data-slide-to="2"></li>
+			<li data-target="#kuvaesitys" data-slide-to="3"></li>
+		</ol>
+
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img src="images/pizza.jpg" alt="Pizza">
+				<div class="carousel-caption">
+					<h3>Pizzaa</h3>
+					<p>Täydellistä pizzaa tuoreilla ja herkullisilla täytteillä!</p>
+				</div>
+			</div>
+
+			<div class="item">
+				<img src="images/pasta.jpg" alt="Pasta">
+				<div class="carousel-caption">
+					<h3>Pastaa</h3>
+					<p>Perinteikästä italialaista pastaa.</p>
+				</div>
+			</div>
+
+			<div class="item">
+				<img src="images/tables.jpg" alt="Pöydät">
+				<div class="carousel-caption">
+					<h3>Viihtyisä ravintola</h3>
+					<p>Kaunis ja rauhallinen sisustuksemme takaa sinulle rentouttavan makunautinnon.</p>
+				</div>
+			</div>
+
+			<div class="item">
+				<img src="images/pizzeria.jpg" alt="Pizzeria">
+				<div class="carousel-caption">
+					<h3>Ystävällinen palvelu</h3>
+					<p>Tarjoilijamme ja kokkimme takaavat sinulle täyden tyytyväisyyden.</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Left and right controls -->
+		<a class="left carousel-control" href="#kuvaesitys" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#kuvaesitys" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+
+	<div class="jumbotron" id="info">
+		<h1>Pizzeria Figaro</h1> 
+		<p>Helsingin italialaisten ravintoloiden parhaimmistoa.</p>
+
+		<div class="container ">    
+			<div class="row">
+				<div class="col-sm-4">
+					<img src="images/asiakas.jpg" alt="Asiakas">
+				</div>
+				<div class="col-sm-4">
+					<h2>Tervetuloa nauttimaan!</h2>
+					<p>Herkullisesta ruoastamme pitävät niin asiakkaat kuin itse omistaja!</p>
+				</div>
+				<div class="col-sm-4">
+					<img src="images/omistaja.jpg" alt="Omistaja">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr class="container"/>
+
+	<div class="container">
+		<h2>Menut</h2>
+		<div class="panel-group" id="menut">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><a data-toggle="collapse" data-parent="#menut" href="#lounas">Lounas (10.00-16.00)</a></h3>
+				</div>
+				<div id="lounas" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="accordion">
+							<h3>Pizza</h3>
+							<div>
+								<p>Quattro Stagioni - 8,90€</p>
+								<p>Ananaspizza - 7,90€</p>
+							</div>
+							<h3>Pasta</h3>
+							<div>
+								<p>Pasta carbonara - 8,90€</p>
+								<p>Pasta napolitana - 7,90€</p>
+							</div>
+							<h3>Juomat</h3>
+							<div>
+								<p>Virvoitusjuoma 0,4l - 1,90€</p>
+								<p>Kahvi 0,25l - 0,90€</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><a data-toggle="collapse" data-parent="#menut" href="#illallinen">Illallinen (16.00-22.00)</a></h3>
+				</div>
+				<div id="illallinen" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="accordion">
+							<h3>Pizza</h3>
+							<div>
+								<p>Pizza fascista - 8,90€</p>
+								<p>Pizza grottesco - 7,90€</p>
+								<p>Pizza mamma mia - 7,90€</p>
+							</div>
+							<h3>Pasta</h3>
+							<div>
+								<p>Pasta orribile - 8,90€</p>
+								<p>Pasta flatulenza - 7,90€</p>
+								<p>Pasta mafia - 7,90€</p>
+							</div>
+							<h3>Juomat</h3>
+							<div>
+								<p>Virvoitusjuoma 0,4l - 1,90€</p>
+								<p>Kahvi 0,25l - 0,90€</p>
+								<p>Saksalainen olut 0,5l - 6,50€</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><a data-toggle="collapse" data-parent="#menut" href="#takeaway">Take-away ja kotiinkuljetus</a></h3>
+				</div>
+				<div id="takeaway" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div class="tabs">
+							<ul>
+								<li><a href="#tabs-1">Nouto</a></li>
+								<li><a href="#tabs-2">Wolt</a></li>
+							</ul>
+							<div id="tabs-1">
+								<div class="accordion">
+									<h3>Pizza</h3>
+									<div>
+										<p>Quattro Stagioni - 8,90€</p>
+										<p>Ananaspizza - 7,90€</p>
+									</div>
+								</div>
+							</div>
+							<div id="tabs-2">
+								<div class="accordion">
+									<h3>Pizza</h3>
+									<div>
+										<p>Quattro Stagioni - 8,90€</p>
+										<p>Ananaspizza - 7,90€</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr class="container"/>
+
+	<div class="container" id="annokset">
+		<h2>Kuvia annoksistamme</h2>
+		<div class="row">
+			<div class="col-sm-6">
+				<a href="images/pizza1.jpg" data-lightbox="pizza" data-title="Pizza fascista"><img class="thumbnail" src="images/pizza1.jpg"></a>
+				<a href="images/pizza2.jpg" data-lightbox="pizza" data-title="Pizza grottesco"><img class="thumbnail" src="images/pizza2.jpg"></a>
+				<a href="images/pizza3.jpg" data-lightbox="pizza" data-title="Pizza mamma mia"><img class="thumbnail" src="images/pizza3.jpg"></a>
+			</div>
+			<div class="col-sm-6">
+				<p>Katso tästä, millaisia makunautintoja ravintolassamme odottaa.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 lightborder">
+				<a href="images/pasta1.jpg" data-lightbox="pasta" data-title="Pasta orribile"><img class="thumbnail" src="images/pasta1.jpg"></a>
+				<a href="images/pasta2.jpg" data-lightbox="pasta" data-title="Pasta flatulenza"><img class="thumbnail" src="images/pasta2.jpg"></a>
+				<a href="images/pasta3.jpg" data-lightbox="pasta" data-title="Pasta mafia"><img class="thumbnail" src="images/pasta3.jpg"></a>
+			</div>
+			<div class="col-sm-6">
+				<p>Ruokamme herkullinen maku ja näyttävä esillepano kutkuttelevat kaikkia aistejasi.</p>
+			</div>
+		</div>
+	</div>
+
+	<hr class="container"/>
+
+	<div class="container">
+		<h2>Pöytävaraukset</h2>
+		<div class="row">
+			<form class="col-sm-6" id="varaus">
+				<div class="form-group">
+					<label for="varaus-name">Nimi</label>
+					<input id="varaus-name" type="text" required/>
+				</div>
+
+				<div class="form-group">
+					<label for="varaus-email">Sähköposti</label>
+					<input id="varaus-email" type="email" required/>
+				</div>
+
+				<div class="form-group">
+					<label for="varaus-tel">Puhelinnumero</label>
+					<input id="varaus-tel" type="tel" pattern="\+?[0-9 () \-]+" required/>
+				</div>
+
+				<div class="form-group">
+					<label for="varaus-date">Päivämäärä</label>
+					<input id="varaus-date" type="text" class="datepicker" required/>
+				</div>
+
+				<div class="form-group">
+					<label for="varaus-time">Saapumiskellonaika</label>
+					<input id="varaus-time" type="time" required/>
+				</div>
+
+				<div class="form-group">
+					<label for="varaus-number">Henkilöiden määrä</label>
+					<input id="varaus-number" type="number" required/>
+				</div>
+
+				<div class="form-group">
+					<label for="varaus-information">Lisätietoa</label>
+					<textarea id="varaus-information"/></textarea>
+				</div>
+
+				<button type="submit" class="btn btn-default">Tee varaus</button>
+			</form>
+
+			<div id="yhteenveto" class="col-sm-6">
+				<h3>Varauksesi on nyt tehty. Tervetuloa!</h3>
+				<div class="form-group">
+					<label for="yhteenveto-name">Nimi</label>
+					<p id="yhteenveto-name"></p>
+				</div>
+
+				<div class="form-group">
+					<label for="yhteenveto-email">Sähköposti</label>
+					<p id="yhteenveto-email"></p>
+				</div>
+
+				<div class="form-group">
+					<label for="yhteenveto-tel">Puhelinnumero</label>
+					<p id="yhteenveto-tel"></p>
+				</div>
+
+				<div class="form-group">
+					<label for="yhteenveto-date">Päivämäärä</label>
+					<p id="yhteenveto-date"></p>
+				</div>
+
+				<div class="form-group">
+					<label for="yhteenveto-time">Saapumiskellonaika</label>
+					<p id="yhteenveto-time"></p>
+				</div>
+
+				<div class="form-group">
+					<label for="yhteenveto-number">Henkilöiden määrä</label>
+					<p id="yhteenveto-number"></p>
+				</div>
+
+				<div class="form-group">
+					<label for="yhteenveto">Lisätietoa</label>
+					<p id="yhteenveto-information"></p>
+				</div>
+
+				<button id="varaus-reset" class="btn btn-default">Tee uusi varaus</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="well" id="yhteystiedot">
+		<div class="row">
+			<div class="col-sm-6">
+				<h2>Yhteystiedot</h2>
+				<p>Mannerheimintie 30, 00100 Helsinki</p>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Nimi</th>
+							<th>Sähköposti</th>
+							<th>Puhelinnumero</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Göril Ebmarah (omistaja)</td>
+							<td>boss@figaro.fi</td>
+							<td>040 1234 500</td>
+						</tr>
+						<tr>
+							<td>Enrique Virtanen (kokki)</td>
+							<td>enrique@figaro.fi</td>
+							<td>040 2345 600</td>
+						</tr>
+					</tbody>
+				</table>
+				<button id="otayhteytta" class="btn btn-default">Avaa yhteydenottolomake</button>
+				<form id="yhteydenotto">
+					<div class="form-group">
+						<label for="yhteydenotto-nimi">Nimi</label>
+						<input id="yhteydenotto-nimi" type="text" required/>
+					</div>
+
+					<div class="form-group">
+						<label for="yhteydenotto-email">Sähköposti</label>
+						<input id="yhteydenotto-email" type="email"/>
+					</div>
+
+					<div class="form-group">
+						<label for="yhteydenotto-puhelin">Puhelinnumero</label>
+						<input id="yhteydenotto-puhelin" type="tel" pattern="\+?[0-9 () \-]+"/>
+					</div>
+
+					<div class="form-group">
+						<label for="yhteydenotto-viesti">Viesti</label>
+						<textarea id="yhteydenotto-viesti"/></textarea>
+					</div>
+
+					<button type="submit" id="lahetaviesti" class="btn btn-default">Lähetä viesti</button>
+				</form>
+
+				<div id="viestilahetetty">
+					<p>Viestisi on lähetetty!</p>
+					<button type="submit" id="uusiviesti" class="btn btn-default">Lähetä uusi viesti</button>
+				</div>
+
+				<p>Pizzeria Figaron omistaa Globex Corporation</p>
+			</div>
+			<div class="col-sm-6">
+				<p>Pizzeria Figaron verkkosivusto on toteutettu käyttämällä Bootstrap- ja jQuery UI -kirjastoja.</p>
+				<p>Aitoon italialaiseen tunnelmaan pääset tästä.</p>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/xCFEk6Y8TmM?autoplay=0" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

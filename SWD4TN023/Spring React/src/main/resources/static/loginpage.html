@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login - Spring React StudentList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+
+<body>
+<div class='container'>
+    <div id='root'></div>
+</div>
+
+<script type="text/babel">
+    class App extends React.Component {
+
+        constructor() {
+            super();
+
+            this.state = {
+                error: false,
+                logout: false,
+            };
+        }
+
+        checkParameter(field) {
+            const url = window.location.href;
+
+            if(url.indexOf('?' + field) != -1){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        componentWillMount() {
+            if (this.checkParameter("error")) {
+                this.setState({
+                    error: true
+                })
+            }
+            if (this.checkParameter("logout")) {
+                this.setState({
+                    logout: true
+                })
+            }
+        }
+
+        render() {
+            return (
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-8 col-md-offset-2">
+                            <h1 className="text-center">Spring React StudentList: Login</h1>
+
+                            {this.state.error == true &&
+                                <div className="alert alert-danger row text-center">
+                                    Invalid username and password.
+                                </div>
+                            }
+
+                            {this.state.logout == true &&
+                                <div className="alert alert-success row text-center">
+                                    You have been logged out.
+                                </div>
+                            }
+
+                            <form className="well well-xs row" method="post">
+                                <div className="input-group">
+                                    <span className="input-group-addon">User name</span>
+                                    <input type="text" name="username" className="form-control" placeholder="User name"/>
+                                </div>
+                                <br/>
+                                <div className="input-group">
+                                    <span className="input-group-addon">Password</span>
+                                    <input type="password" name="password" className="form-control" placeholder="Password"/>
+                                </div>
+                                <br/>
+
+                                <div className="text-center">
+                                    <button type="submit" className="btn btn-success btn-block">Sign In</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root') );
+</script>
+
+</body>
+</html>

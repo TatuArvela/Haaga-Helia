@@ -1,0 +1,24 @@
+<div class="content">
+  <div class="container text-center my-5">
+    <div class="card border-0">
+      <div class="card-block">
+        <div class="card-title">
+          <h1 class="display-4">Amica {{menu.restaurantName}} ruokalista</h1>
+        </div>
+        <div class="card-block">
+          <div class="d-flex flex-wrap justify-content-center">
+            <div class="jumbotron p-2 col-lg-5 m-1" *ngFor="let menuForDay of menu.menusForDays">
+              <h2>{{menuForDay.date | date:'EEEE'}} ({{menuForDay.date | date:'d.M.yyyy'}})</h2>
+              <ul class="my-4" *ngFor="let setMenu of menuForDay.setMenus">
+                <h3 class="h4">{{setMenu.name}}</h3>
+                <li *ngFor="let component of setMenu.components">
+                  <span>{{component}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+  <meta http-equiv="Content-Security-Policy:" content="default-src *"/>
+  <meta http-equiv="X-Content-Security-Policy:" content="default-src *"/>
+  <meta http-equiv="X-WebKit-CSP:" content="default-src *"/>
+  
+  <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css"/>
+  <link rel="stylesheet" type="text/css" href="css/index.css"/>
+
+  <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+  <script type="text/javascript" src="js/jquery-migrate-3.0.0.min.js"></script>
+  <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+  <script type="text/javascript" src="js/suncalc.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script>
+    app.initialize();
+  </script>
+  
+    <title>Sunflower</title>
+</head>
+
+<body>
+  <div data-role="page" id="main" class="container-fluid" data-title="Main">
+    <!-- Settings -->
+    <div data-role="panel" id="settings" data-display="overlay" data-theme="a">
+      <ul class="ui-listview">
+        <li class="ui-last-child">
+          <a class="ui-btn ui-btn-icon-right ui-icon-info ui-nodisc-icon ui-alt-icon" data-rel="close" href="#about">Tietoa sovelluksesta</a>
+        </li>
+      </ul>
+      
+      <h2>Asetukset</h2>
+      <form>
+        <label for="setting-animation">Animaatio</label>
+        <select name="setting-animation" id="setting-animation" data-role="slider">
+          <option value="off">Pois</option>
+          <option value="on" selected>Päälle</option>
+        </select> 
+
+        <label for="setting-fps">Animaation päivitysnopeus (fps)</label>
+        <input type="range" name="setting-fps" id="setting-fps" value="60" min="1" max="120">
+        
+        <label for="setting-scale">Kukan koko (%)</label>
+        <input type="range" name="setting-scale" id="setting-scale" value="100" min="1" max="100">
+      </form>
+    </div>
+    
+    <!-- About -->
+    <div data-role="panel" id="about" data-display="overlay" data-theme="a">
+      <ul class="ui-listview">
+        <li class="ui-last-child">
+          <a class="ui-btn ui-btn-icon-right ui-icon-gear ui-nodisc-icon ui-alt-icon" data-rel="close" href="#settings">Asetukset</a>
+        </li>
+      </ul>
+      
+      <img src='img/sunflower.svg'/>
+      <h2>Sunflower</h2>
+      <p>(C) 2016 Tatu Arvela. Kaikki oikeudet pidätetään.</p>
+      
+      <p>Sunflower hyödyntää seuraavia kirjastoja ja palveluita:</p>
+      <ul>
+        <li><a href="https://jquerymobile.com/">jQuery Mobile</a></li>
+        <li><a href="https://github.com/mourner/suncalc">SunCalc</a></li>
+        <li><a href="http://openweathermap.org/">OpenWeatherMap</a></li>
+      </ul>
+    </div>
+    
+    <!-- Main -->
+    <div data-role="header" data-position="fixed" class="ui-header ui-header-fixed" id="header">
+        <a href="#settings" class="ui-btn ui-btn-inline ui-icon-gear ui-btn-icon-notext"></a>
+        <h1 id="title">
+          <a class="ui-btn ui-btn-inline ui-icon-location ui-btn-icon-notext"></a>
+          <span id="wdata-city">???</span>
+        </h1>
+        <p id="time" class="ui-btn-right ui-btn">??:??</p>
+        </div>
+    
+    <canvas id="canvas"></canvas>
+    
+    <div id="information">
+      <p><img src='img/icon_humidity.svg'/><span class='big' id="wdata-humidity">?</span> %</p>
+      <p><img src='img/icon_wind.svg'/><span class='big' id="wdata-wind">?</span> m/s</p>
+      <p><img src='img/icon_temp.svg'/><span class='big' id="wdata-temperature">?</span> °C</p>
+      <p><img src='img/icon_cloud.svg'/><span class='big' id="wdata-clouds">?</span> %</p>
+    </div>
+    </div>
+</body>
+</html>

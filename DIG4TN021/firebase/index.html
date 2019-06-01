@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Firebase</title>
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+<style>
+	body {
+		background: white;
+		font-family: 'Roboto', sans-serif;
+	}
+
+	.sivu {
+		margin: 50px auto;
+		padding: 40px;
+		max-width: 700px;
+		border-radius: 5px;
+	}
+
+	#messageform {
+		text-align: right;
+	}
+
+	.input-field {
+		text-align: left;
+	}
+
+	#viestiketju {
+		height: 200px;
+		overflow-y: auto;
+	}
+
+	::-webkit-scrollbar {
+		width: 12px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: #E0E0E0;
+		border-radius: 4px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: #616161;
+		border-radius: 4px;
+	}
+</style>
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+<script>
+
+	// Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyDqHwgncHUx_2ja-vbdohkr-3WVDQxGFiQ",
+		authDomain: "digitekniikat-harjoitus.firebaseapp.com",
+		databaseURL: "https://digitekniikat-harjoitus.firebaseio.com",
+		storageBucket: "digitekniikat-harjoitus.appspot.com",
+		messagingSenderId: "1074786489645"
+	};
+	firebase.initializeApp(config);
+
+	// Load
+	var rootRef = firebase.database().ref().child('viestit');
+	rootRef.on('child_added', snap => {
+		$("#loading").remove();
+		var timestamp = new Date(snap.child("timestamp").val());
+		var timestampFormatted = timestamp.getHours() + ":" + timestamp.getMinutes();
+		var message = snap.child("message").val();
+		$("#viestiketju").append('<p class="card-panel tooltipped" data-position="left" data-delay="50" data-tooltip="' + timestampFormatted + '">' + message + '</p>');
+		$('.tooltipped').tooltip({delay: 50});
+		$("#viestiketju").scrollTop($("#viestiketju")[0].scrollHeight);
+	});
+
+	// Send
+	function sendMessage(){
+		var firebaseRef = firebase.database().ref();
+		var message = $("#viesti").val();
+		var time = new Date();
+		firebaseRef.child("viestit").push({
+			timestamp: $.now(),
+			message: message
+		});
+		$("#viesti").val("");
+		$("#viestiketju").scrollTop($("#viestiketju")[0].scrollHeight);
+	}
+</script>
+</head>
+<body>
+	<div class="sivu card-panel orange lighten-2">
+		<h2 id="otsikko">Firebase chat</h2>
+		<div class="card-panel grey lighten-3">
+			<div id="viestiketju">
+				<p id="loading">Ladataan viestejä...</p>
+			</div>
+		</div>
+		<div class="card-panel grey lighten-3">
+			<form id="messageform" onsubmit="sendMessage(); return false;">
+				<div class="card-panel">
+					<div class="input-field">
+						<i class="material-icons prefix">mode_edit</i>
+						<input type="text" id="viesti"/>
+						<label for="viesti">Uusi viesti</label>
+					</div>
+				</div>
+				<button type="submit" id="submitBtn" class="waves-effect waves-light btn-large red"><i class="material-icons right">send</i>Lähetä</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

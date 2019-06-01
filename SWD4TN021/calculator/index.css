@@ -1,0 +1,54 @@
+.center {
+    text-align: center;
+}
+
+#videoElement {
+    display: block;
+    max-width: 100%;
+    margin: auto;
+}
+
+.ui-btn.ui-input-btn {
+    display: inline;
+}
+
+#säätiedot-kaupunki {
+    text-align: center;
+}
+
+table {
+    text-align: left;
+    margin: auto;
+}
+
+td, th {
+    padding: 10px 20px 10px 20px;
+    font-weight: normal;
+}
+
+#etäisyys-tuloste {
+    text-align: center;
+}
+
+#kartta {
+    width: 100%;
+    height: 100vw;
+    max-height: 500px;
+    border: 1px solid rgb(221,221,221);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
+}
+
+#ruokalista {
+    text-align: center;
+    margin: auto;
+    width: auto;
+}
+
+#ruokalista p {
+    width: auto;
+}
+
+label.error {
+    color: red;
+    font-size: 0.8em;
+}

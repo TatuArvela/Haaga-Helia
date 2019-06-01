@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css"/> 
+    <link rel="stylesheet" href="index.css"/>
+    
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.js"></script>
+</head>
+
+<body>
+    
+    <div data-role="header" data-position="fixed" data-theme="a">
+        <a href="#menu" class="ui-btn ui-btn-left ui-corner-all ui-btn-icon-notext ui-icon-bars"></a>
+        <h1>Otsikko</h1>
+    </div>
+    
+    
+    <div data-role="panel" id="menu" data-display="overlay" data-theme="a">
+        <h2>jquery-mobile-basics</h2>
+        <p>
+            This is a remix of the jQuery Mobile exercises I did on Haaga-Helia's mobile programming course, SWD4TN021. I have deleted my original repository for that course.<br/><br/>
+            <a href="https://github.com/TatuArvela/Sunflower">My final project for the course is still available here (Sunflower).</a>
+        </p>
+        <br/>
+        <a class="ui-btn ui-btn-icon-right ui-icon-delete" data-rel="close" data-icon="delete">Close menu</a>
+    </div>
+    
+    
+    <div data-role="page" id="calculator" data-title="Calculator">
+        <div role="main" class="ui-content ui-body">
+            <div class="center">
+                <label for="basic" class="ui-hidden-accessible">Number A:</label>
+                <input type="number" name="name" id="a" value="" class="numberinput"/>
+                
+                <button class="ui-btn ui-btn-inline" id="add">+</button>
+                <button class="ui-btn ui-btn-inline" id="subtract">−</button>
+                <button class="ui-btn ui-btn-inline" id="multiply">×</button>
+                <button class="ui-btn ui-btn-inline" id="divide">÷</button>
+
+                <label for="basic" class="ui-hidden-accessible">Number B:</label>
+                <input type="number" name="name" id="b" value="" class="numberinput"/>
+            </div>
+            <p>= <span id="tulos"></span></p>
+        </div>
+    </div>
+    
+    
+    <div data-role="page" id="camera" data-title="Camera">
+        <div role="main" class="ui-content ui-body">
+            <video autoplay="true" id="videoElement"></video>
+        </div>
+    </div>
+    
+    
+    <div data-role="page" id="weather" data-title="Weather">
+        <div role="main" class="ui-content ui-body">
+            <h2 id="säätiedot-kaupunki"></h2>
+            <table>
+                <tr>
+                    <th>Description:</th>
+                    <th id="säätiedot-kuvaus"></th>
+                </tr>
+                <tr>
+                    <th>Temperature:</th>
+                    <th id="säätiedot-lämpötila"></th>
+                </tr>
+                <tr>
+                    <th>Wind:</th>
+                    <th id="säätiedot-tuuli"></th>
+                </tr>
+                <tr>
+                    <th>Clouds:</th>
+                    <th id="säätiedot-pilvisyys"></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    
+    <div data-role="page" id="distance" data-title="Distance">
+        <div role="main" class="ui-content ui-body">
+            <div>
+                <form id="etäisyys-lomake" onsubmit="haeEtäisyys()">
+                    <label for="etäisyys-mistä" class="ui-hidden-accessible">From</label>
+                    <input type="text" name="etäisyys-mistä" id="etäisyys-mistä" placeholder="From">
+                    <label for="etäisyys-minne" class="ui-hidden-accessible">To</label>
+                    <input type="text" name="etäisyys-minne" id="etäisyys-minne" placeholder="To">
+                    <input type="submit" id="etäisyys-lähetä" class="ui-btn ui-corner-all ui-btn-inline" value="Get distance">
+                    <a href="#perus" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">It's not doing anything...</a>
+                    <div data-role="popup" data-arrow="t" id="perus">
+                        <p>Sadly, due to restrictions in modern browsers, this might not work. Damn cross-origins.</p>
+                    </div>
+                </form>
+                
+                <p id="etäisyys-tuloste"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <div data-role="page" id="form" data-title="Form">
+        <div role="main" class="ui-content ui-body">
+            <form id="lomake">
+                <fieldset>
+                    <label for="kayttajatunnus">Username</label>
+                    <input type="text" name="kayttajatunnus" id="kayttajatunnus">
+
+                    <label for="sahkoposti">Email</label>
+                    <input type="text" name="sahkoposti" id="sahkoposti">
+
+                    <label for="salasana">Password</label>
+                    <input type="text" name="salasana" id="salasana">
+
+                    <label for="salasana-vahvista">Validate password</label>
+                    <input type="text" name="salasana-vahvista" id="salasana-vahvista" equalTo="#salasana" minlength="6">
+
+                    <br/>
+                    <div class="ui-input-btn ui-btn ui-btn-inline">
+                        Send
+                        <input type="submit" data-enhanced="true" value="Send">
+                    </div>
+                    
+                    <div id="messageBox"></div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    
+    
+    <div data-role="footer" data-position="fixed" data-theme="a" role="contentinfo" class="ui-footer ui-bar-a ui-footer-fixed">
+        <div data-role="navbar" class="ui-navbar" role="navigation">
+            <ul>
+                <li><a href="#calculator" data-icon="grid" data-prefetch="true" class="ui-btn ui-btn-active">Calculator</a></li>
+                <li><a href="#camera" data-icon="camera" data-prefetch="true" class="ui-btn">Camera</a></li>
+                <li><a href="#weather" data-icon="cloud" data-prefetch="true" class="ui-btn">Weather</a></li>
+                <li><a href="#distance" data-icon="location" data-prefetch="true" class="ui-btn">Distance</a></li>
+                <li><a href="#form" data-icon="edit" data-prefetch="true" class="ui-btn">Form</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <script src="index.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Bookstore: Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div class="container well well-lg">
+        <h1 class="text-center">Bookstore: Login</h1>
+
+        <div th:if="${param.error}" class="alert alert-danger">
+            Invalid username and password.
+        </div>
+
+        <div th:if="${param.logout}" class="alert alert-success">
+            You have been logged out.
+        </div>
+
+        <form th:action="@{/login}" method="post">
+            <div class="input-group">
+                <span class="input-group-addon">User name</span>
+                <input type="text" name="username" class="form-control" />
+            </div>
+            <br/>
+            <div class="input-group">
+                <span class="input-group-addon">Password</span>
+                <input type="password" name="password" class="form-control" />
+            </div>
+            <br/>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Sign In</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

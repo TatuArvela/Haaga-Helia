@@ -1,0 +1,232 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* Sunflower */
+
+* {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	/* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+	-webkit-touch-callout: none;
+	/* prevent callout to copy image, etc when tap to hold */
+	-webkit-text-size-adjust: none;
+	/* prevent webkit from resizing text to fit */
+	-webkit-user-select: none;
+	/* prevent copy paste, to allow, change 'none' to 'text' */
+	background-attachment: fixed;
+	font-size: 16px;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+
+@font-face {
+    font-family: "Lora Regular";
+    src: url("fonts/Lora-Regular.ttf");
+}
+
+@font-face {
+    font-family: IndieFlower;
+    src: url("fonts/IndieFlower.ttf");
+}
+
+body,
+input,
+select,
+textarea,
+button,
+.ui-btn {
+	font-family: "Lora Regular", cursive;
+}
+
+#main {
+	background: black;
+}
+
+[data-role="panel"] {
+	border: none;
+	z-index: 200;
+	cursor: default;
+}
+
+[data-role="panel"] h2 {
+	font-size: 1.2em;
+	font-weight: bold;
+	margin: 20px 0px;
+}
+
+[data-role="panel"] img {
+	height: 100px;
+	margin: 10px 0px;
+}
+
+[data-role="panel"] > div > ul > li > a {
+	border-width: 0px;
+	border-style: none;
+	border-color: transparent;
+	background: none;
+}
+
+[data-role="panel"] > div > ul > li > a:hover {
+	background: #C8E6C9;
+}
+
+#header {
+	border: none;
+	background: none;
+	color: white;
+	z-index: 100;
+	line-height: 40px;
+	height: 40px;
+	background: none;;
+	padding: 0px;
+}
+
+#header > h1 {
+	height: 40px;
+	padding: 0px;
+	cursor: default;
+}
+
+#header > a,
+#header > a::after,
+#header > h1 > a,
+#header > h1 > a::after,
+#header > p,
+#header > p::after {
+	height: 40px;
+	top: 0px;
+	background-color: transparent;
+	color: white;
+	border: none;
+	box-shadow: none;
+}
+
+#header > a,
+#header > h1 > a {
+	margin: 0px;
+}
+
+#header > a::after,
+#header > h1 > a::after,
+#header > p::after {
+	margin-top: -1px;
+}
+
+#header > h1 > a {
+	cursor: default;
+}
+
+#time {
+	cursor: default;
+	font-size: 1em;
+	height: 40px;
+	line-height: 40px;
+	padding: 0px;
+	margin-right: 5px;
+}
+
+#canvas {
+	background: rgb(70,70,70);
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	z-index: 0;
+	
+	width: calc(100vw - 10px);
+	height: calc(100vh - 79px);
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    top: 39px;
+	border-radius: 25px;
+}
+
+#information {
+	height: 40px;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	text-align: center;
+	display: flex;
+	flex-direction: row;
+	z-index: 100;
+	background: none;
+}
+
+#information > p {
+	color: white;
+	font-weight: bold;
+	display: inline-block;
+	line-height: 40px;
+	margin: 0px;
+	vertical-align: middle;
+	cursor: default;
+	flex-grow: 1;
+	font-size: 0.75em;
+}
+
+#information > p > img {
+	height: 1.5em;
+	vertical-align: text-bottom;
+	padding: 0px 5px;
+}
+
+#information > p > .big {
+	font-size: 1.5em;
+}

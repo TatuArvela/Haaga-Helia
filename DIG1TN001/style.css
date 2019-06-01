@@ -1,0 +1,413 @@
+/* 
+	CSS Reset
+	
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* 	
+	Main CSS
+	
+	Stylesheet formatting template
+	positioning, display
+	box model (width, height, margin, padding)
+	style, font, animation
+	
+*/
+
+		/* Body and Page Container */
+
+html, body {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+
+	background-color: rgb(64, 64, 64);
+/*	background-image: url("bg.png");
+	background-repeat: repeat-x repeat-y;*/
+	font-family: "Lato", Arial, sans-serif;
+	font-size: 10px;
+}
+
+
+		/* Floating Navigation Bar Header */
+
+nav {
+	position: fixed;
+	z-index: 1;
+	overflow: hidden;
+	
+	height: 60px;
+	width: 100%;
+	
+	background: rgb(255, 255, 255);
+}
+
+nav a {
+	top: 0;
+	display: inline-block;
+	
+	margin-right: -2px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 23px;
+	padding-bottom: 17px;
+	
+	color: rgb(0, 0, 0);	
+	text-decoration: none;
+	font-size: 1.6em;
+	font-family: "Roboto Light", Arial, sans-serif;
+}
+
+nav a:hover {
+	padding-bottom: 29px;
+	
+	color: rgb(255, 255, 255);
+	background-color: rgb(227, 24, 24);
+	transition: background-color 0.3s;
+}
+
+#current {
+	border-bottom: 4px solid rgb(227, 24, 24);
+}
+
+#current:hover {
+	border-bottom: none;
+
+	transition: border-bottom 1s;
+	transition: background-color 0.3s;
+}
+
+#logo, #logocurrent {
+	top: 0;
+	display: inline-block;
+	float: left;
+	
+	margin-right: 0px;
+	padding: 20px;
+	padding-top: 10px;
+	padding-bottom: 3px;
+}
+
+#logocurrent {
+	border-bottom: 4px solid rgb(227, 24, 24);
+}
+
+#logo img, #logocurrent img {
+	height: 40px;
+}
+
+#logo:hover, #logocurrent:hover {
+	padding-bottom: 10px;
+
+	background-image: url("minista%20white.png");
+	background-size: 153px 40px;
+	background-repeat: no-repeat;
+	background-position: 20px 10px;
+}
+
+#logo:hover > img, #logocurrent:hover > img {
+	visibility: hidden;
+}
+
+		/* Page Containers */
+
+section {
+	position: relative;
+	overflow: hidden;
+
+	max-width: 1500px;
+	margin: 25px auto;
+	
+	box-shadow: 0px 0px 10px rgb(0, 0, 0);
+	color: rgb(37, 37, 37);
+	border-right: solid 1em rgb(227, 24, 24);
+	background-color: rgb(255, 255, 255);
+	font-size: inherit;
+	font-family: "Lato", Arial, sans-serif;
+}
+
+section:first-of-type {
+	margin-top: 70px;
+}
+
+section > * {
+	display: table-cell;
+	vertical-align:top;
+}
+
+.title {
+	width: auto;
+	height: 100%;
+	min-height: 100%;
+	
+	background-color: rgb(227, 24, 24);
+}
+	
+.content {
+	width: 100%;
+	padding: 20px;
+}
+
+		/* Page Content */
+
+h1 {
+	width: 150px;
+	height: 100%;
+	margin: 0px;
+	padding: 20px;
+	
+	color: rgb(255, 255, 255);
+	font-size: 2.7em;
+	line-height: 1.1em;
+	font-family: "Roboto Light", Arial, sans-serif;
+}
+
+h2 {
+	margin: 0em;
+	margin-top: 1.5em;
+	
+	font-size: 3em;
+}
+
+h3 {
+	margin-top: 1.8em;
+	
+	font-size: 2.4em;
+}
+
+h4 {
+	margin-top: 1.8em;
+	
+	font-size: 2.2em;
+}
+
+p, ul, td {
+	font-size: 1.8em;
+	line-height: 1.2em;
+}
+
+p, ul, li {
+	margin-top: 1em;
+}
+
+td {
+	vertical-align: middle;
+}
+
+.list-l {
+	margin-left: 2em;
+	list-style-type: disc;
+}
+
+.list-n {
+	margin-left: 2em;
+	list-style-type: decimal;
+}
+
+p img, table {
+	margin-top: 2em;
+}
+
+p img, td img {
+	height: 3em;
+}
+
+
+.photos  {
+	width: 25em;
+	height: 100%;
+	min-height: 100%;
+	padding-left: 10em;
+	padding-right: 8em;
+}
+
+.photos img {
+	width: 25em;
+	margin: 1em;
+}
+
+.logos {
+	display: inline-block;
+}
+
+.logos img {
+	max-height: 4em;
+	margin: 1em;
+}
+
+#map {
+	width: 100%;
+}
+
+		/* Footer */
+
+footer {
+	clear: both;
+	display: block;
+	
+	margin: 0;
+	
+	color: rgb(37, 37, 37);
+	background-color: rgb(227, 227, 227);
+}
+
+footer p {
+	margin: 0;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+
+	cursor: default;
+	font-size: 11px;
+	font-family: "Roboto Light", Arial, sans-serif;
+	text-align: center;
+	transition: display 1s;
+	transition: visibility 1s;
+}
+
+.altfooter {
+	display: none;
+	visibility: hidden;
+}
+
+footer:hover > p {
+	display: none;
+}
+
+footer:hover > .altfooter {
+	display: block;
+	visibility: visible;
+}
+
+
+/*
+	Mobile CSS
+	
+*/
+
+@media only screen and (max-width: 1000px) {
+    body {
+        background: rgb(255, 255, 255);
+    }
+	
+	nav {
+		position: relative;
+		height: auto;
+		border-bottom: solid 5px rgb(227, 227, 227);
+	}
+	
+	nav a, #current, #logo, #logocurrent {
+		float: none;
+		display: block;
+		border-bottom: none;
+		padding: 10px;
+		padding-left: 20px;
+	}
+	
+	#logo, #logocurrent {
+		padding-left: 20px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	
+	nav a:hover, #logo:hover, #logocurrent:hover {
+		float: none;
+		display: block;
+		border-bottom: none;
+		padding: 10px;
+		padding-left: 20px;
+	}
+	
+	#logo:hover, #logocurrent:hover {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	
+	section {
+		border-right: none;
+	}
+	
+	section:first-of-type {
+		margin-top: 5px;
+	}
+	
+	section > * {
+		display: block;
+	}
+	
+	.content {
+		width: auto;
+		padding: none;
+	}
+	
+	.photos {
+		display: inline-block;
+		vertical-align:top;
+		width: auto;
+		height: auto;
+		min-height: initial;
+		padding: 10px;
+	}
+	
+	.photos img {
+		display: inline-block;
+		width: 25%;
+		margin: 5px;
+	}
+}

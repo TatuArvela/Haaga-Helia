@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Bookstore: Add book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container well well-lg">
+        <h1 class="text-center">Bookstore: Add books</h1>
+        <form th:object="${book}" th:action="@{save}" action="#" method="post">
+            <div class="input-group">
+                <span class="input-group-addon">Title</span>
+                <input type="text" id="title" class="form-control" th:field="*{title}" />
+            </div>
+            <br/>
+            <div class="input-group">
+                <span class="input-group-addon">Author</span>
+                <input type="text" id="author" class="form-control" th:field="*{author}" />
+            </div>
+            <br/>
+            <div class="input-group">
+                <span class="input-group-addon">ISBN</span>
+                <input type="text" id="isbn" class="form-control" th:field="*{isbn}" />
+            </div>
+            <br/>
+            <div class="input-group">
+                <span class="input-group-addon">Year</span>
+                <input type="text" id="year" class="form-control" th:field="*{year}" />
+            </div>
+            <br/>
+            <div class="input-group">
+                <span class="input-group-addon">Price</span>
+                <input type="text" id="price" class="form-control" th:field="*{price}" />
+            </div>
+            <br/>
+
+            <div class="text-center">
+                <a href="/booklist" class="btn btn-primary">Back to list</a>
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
